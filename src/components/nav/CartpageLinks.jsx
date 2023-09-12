@@ -1,7 +1,7 @@
-const homepageLinks = [
+const CartpageLinks = [
     {label: 'Home', url: '/'},
     {label: 'Individual product page', url: '/products'},
     {label: 'Cart', url: '/cart'}
 ]
 
-export default homepageLinks;
+export default CartpageLinks;
