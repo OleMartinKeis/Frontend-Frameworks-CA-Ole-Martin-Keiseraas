@@ -1,6 +1,6 @@
 import React from "react";
-import MyNavbar from "../nav/navbar";
-import homepageLinks from "../nav/homepageLinks";
+import MyNavbar from "../nav/Navbar";
+import homepageLinks from "../nav/HomepageLinks";
 
 function Layout({ children }) {
     return (

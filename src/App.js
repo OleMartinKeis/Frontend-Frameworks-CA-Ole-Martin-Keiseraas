@@ -1,15 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
-import MyNavbar from './components/nav/navbar';
-import homepageLinks from './components/nav/homepageLinks';
 import Layout from './components/ui/Layout';
+import CartIcon from './components/ui/CartIcon';
 
 function App() {
 
 
   return (
     <div>
-        <Layout />
+        <Layout>
+            <CartIcon />
+        </Layout>
     </div>
   );
 }
