@@ -1,6 +1,6 @@
 const homepageLinks = [
     {label: 'Home', url: '/'},
-    {label: 'Individual product page', url: '/products'},
+    {label: 'Individual product page', url: './product'},
     {label: 'Cart', url: '/cart'}
 ]
 

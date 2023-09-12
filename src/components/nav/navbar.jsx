@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function MyNavbar({ title, links }) {
     return (
@@ -7,7 +8,7 @@ function MyNavbar({ title, links }) {
             <ul>
                 {links.map((link, index) => (
                     <li key={index}>
-                        <a href={link.url}>{link.label}</a>
+                        <Link to={link.url}>{link.label}</Link>
                     </li>
                 ))}
             </ul>
