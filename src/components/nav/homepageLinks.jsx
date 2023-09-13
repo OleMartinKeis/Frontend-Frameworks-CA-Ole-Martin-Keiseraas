@@ -1,7 +1,7 @@
 const homepageLinks = [
     {label: 'Home', url: '/'},
     {label: 'Individual product page', url: './product'},
-    {label: 'Cart', url: '/cart'}
+    {label: '🛒', url: '/cart'}
 ]
 
 export default homepageLinks;
