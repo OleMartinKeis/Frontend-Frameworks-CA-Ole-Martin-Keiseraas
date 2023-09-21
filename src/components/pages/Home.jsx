@@ -11,6 +11,7 @@ function HomeApp() {
 
     return (
         <div>
+            <input type='text'></input>
             {data.map((data) => (
                 <div key={data.id}>
                     <h2>{data.title}</h2>
