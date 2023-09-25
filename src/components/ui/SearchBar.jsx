@@ -29,14 +29,12 @@ function SearchBar() {
                 ) : (
                     <div>
                         {filteredData.map((item) => (
-                            <Card key={item.id} className="product-card">
+                            <Card style={{ width: '16rem' }} key={item.id} className="product-card flex">
                                 <Card.Img className="shop-img" src={item.imageUrl} variant="top" alt={item.title} />
-                                <Card.Body>
-
-                                    
-                                <Card.Title className="text-align-center">{item.title}</Card.Title>
-                                <Card.Text>{item.description}</Card.Text>
-                                <Button href={`/product/${item.id}`}>View Product!</Button>
+                                <Card.Body>   
+                                    <Card.Title className="text-align-center">{item.title}</Card.Title>
+                                    <Card.Text>{item.description}</Card.Text>
+                                    <Button href={`/product/${item.id}`}>View Product!</Button>
                                 </Card.Body>
                             </Card>
                         ))}
