@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import useAPI from "../../hooks/API/useAPI";
+import { Card, Button } from "react-bootstrap";
+
 
 function SearchBar() {
     var url = '';
     const [userInput, setUserInput] = useState('');
-    const [apiData, setApiData] = useState([]);
     const { data: ApiData, isLoading, isError } = useAPI(`https://api.noroff.dev/api/v1/online-shop?query=${userInput}`);
-    
+
     const handleInputChange = (e) => {
         const inputText = e.target.value;
         setUserInput(inputText);
@@ -19,7 +20,7 @@ function SearchBar() {
 
     return (
         <div>
-            <input type='text' value={userInput} placeholder='Search...' onChange={handleInputChange}></input>
+            <input className="searchbar" type='text' value={userInput} placeholder='Search...' onChange={handleInputChange}></input>
             <div>
                 {isLoading ? (
                     <p>Loading...</p>
@@ -28,12 +29,16 @@ function SearchBar() {
                 ) : (
                     <div>
                         {filteredData.map((item) => (
-                            <div key={item.id}>
-                                <h2>{item.title}</h2>
-                                <p>{item.description}</p>
-                                <a href={`/product/${item.id}`}>View Product!</a>
-                                <img src={item.imageUrl} alt={item.title} />
-                            </div>
+                            <Card key={item.id} className="product-card">
+                                <Card.Img className="shop-img" src={item.imageUrl} variant="top" alt={item.title} />
+                                <Card.Body>
+
+                                    
+                                <Card.Title className="text-align-center">{item.title}</Card.Title>
+                                <Card.Text>{item.description}</Card.Text>
+                                <Button href={`/product/${item.id}`}>View Product!</Button>
+                                </Card.Body>
+                            </Card>
                         ))}
                     </div>
                 )}

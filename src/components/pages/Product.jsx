@@ -15,7 +15,7 @@ function Product() {
         <div className="individual-product">Individual post id: {data.id}
             <h1>{data.title}</h1>
             <p>{data.description}</p>
-            <img src={data.imageUrl}/>
+            <img className="product-image" src={data.imageUrl}/>
             <div className="product-price">
                 <p>{data.price}</p>
                 <p>{data.discountedPrice}</p>
