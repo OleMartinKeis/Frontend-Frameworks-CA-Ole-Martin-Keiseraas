@@ -6,7 +6,8 @@ import Product from './components/pages/Product'
 import Cart from './components/pages/Cart'
 import Checkout from './components/pages/Checkout';
 import HomeApp from './components/pages/Home';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.scss';
 
 function App() {
   return (
