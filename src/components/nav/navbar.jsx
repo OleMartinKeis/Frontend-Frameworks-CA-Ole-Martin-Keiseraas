@@ -2,24 +2,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import CartIcon from "../ui/CartIcon";
 
-function MyNavbar({ title, links }) {
+function MyNavbar({ title, links, cartCount }) {
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="sm" className="bg-body-tertiary">
             <Container>
                 <LinkContainer to="/home">
                     <Navbar.Brand href="home">MyLittleShop</Navbar.Brand>
                 </LinkContainer>
-                <Navbar.Toggle aria-controls="basic-navnar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
+                    <Nav className="me-auto justify-content-between w-100">
                     {links.map((link, index) => (
-                   
-                   <Link key={index} to={link.url}>{link.label}</Link>
+                    <LinkContainer key={index} to={link.url}>                   
+                        <Link lg={4}>{link.label}</Link>
+                    </LinkContainer>
 
-           ))}
+                    ))}
+                        <Link to="/cart">
+                            <CartIcon cartCount={cartCount} /> 
+                        </Link>
                     </Nav>
-                </Navbar.Collapse>
             </Container>
  
         </Navbar>
