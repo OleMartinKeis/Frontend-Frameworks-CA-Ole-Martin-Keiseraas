@@ -1,46 +1,75 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useAPI from "../../hooks/API/useAPI";
+import { useCart } from "../../hooks/API/CartContext";
+import { CartContext } from "../../App";
+
 
 function Product() {
-    let { id } = useParams();
+  const { id } = useParams();
+  const { setCart, cart } = useContext(CartContext)
+  const { data: productData, isLoading, isError } = useAPI(
+    `https://api.noroff.dev/api/v1/online-shop/${id}`
+  );
 
-    const { data, isLoading, isError } = useAPI(
-        `https://api.noroff.dev/api/v1/online-shop/${id}`,
-      );
+const addToCart = () => {
+        
+    const existingItemIndex = cart.findIndex((item) => item.id === productData.id);
+  
+    if (existingItemIndex !== -1) {
+        const updatedCart = [...cart];
+        updatedCart[existingItemIndex].quantity += 1;
+        setCart(updatedCart);
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        } else {
+        const newItem = { ...productData, quantity: 1 };
+        setCart((prevCart) => [...prevCart, newItem]);
+        localStorage.setItem("cart", JSON.stringify([...cart, newItem]));
+    }
+  };
 
-    
 
-    return (
-        <div className="individual-product">Individual post id: {data.id}
-            <h1>{data.title}</h1>
-            <p>{data.description}</p>
-            <img className="product-image" src={data.imageUrl}/>
-            <div className="product-price">
-                <p>{data.price}</p>
-                <p>{data.discountedPrice}</p>
-            </div>
-            <div>
-                <h2>Reviews</h2>
-                {data.reviews && data.reviews.length > 0 ? (
-                <ul>
-                {data.reviews.map((review) => (
-                    <li key={review.id}>
-                        <strong>{review.username}</strong>
-                        <p>Rating: {review.rating}</p>
-                        <p>{review.description}</p>
-                        <hr></hr>
-                    </li>
-                ))}
-                
-                </ul>
-                ) : (
-                    <p>No reviews available</p>
-                )}
+    if(!productData) {
+        return <div>Loading...</div>
+    }
 
-            </div>
+  return (
+    <div className="individual-product">
+        Individual post id: {productData.id}
+        <h1>{productData.title}</h1>
+        <p>{productData.description}</p>
+        <img
+            className="product-image"
+            src={productData.imageUrl}
+            alt={productData.title}
+        />
+        <div className="product-price">
+            {productData.discountedPrice ? (
+            <p>{productData.discountedPrice}</p>
+            ) : (
+            <p>{productData.price}</p>
+            )}
         </div>
-        )
+        <button onClick={addToCart}>Add to cart</button>
+        <div>
+            <h2>Reviews</h2>
+            {productData.reviews && productData.reviews.length > 0 ? (
+            <ul>
+                {productData.reviews.map((review) => (
+                <li key={review.id}>
+                    <strong>{review.username}</strong>
+                    <p>Rating: {review.rating}</p>
+                    <p>{review.description}</p>
+                    <hr />
+                </li>
+                ))}
+            </ul>
+            ) : (
+            <p>No reviews available</p>
+            )}
+        </div>
+    </div>
+  );
 }
 
 export default Product;
