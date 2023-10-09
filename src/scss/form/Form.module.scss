@@ -1,0 +1,19 @@
+.centered-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    padding: 16px;
+    border: 1px solid rgb(13, 110, 0);
+    background-color: #fff;
+    border-radius: 3px 3px 12px 12px;
+  }
+
+.form-label{
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+    margin-top: 2px !important;
+    padding-top: 8px !important;
+}

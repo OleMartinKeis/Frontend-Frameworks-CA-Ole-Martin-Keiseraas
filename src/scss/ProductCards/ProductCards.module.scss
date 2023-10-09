@@ -1,0 +1,30 @@
+
+
+
+.cardTitleClass{
+    margin: 0 auto;
+    text-align: center;
+    color: blue !important;
+}
+
+.cardTextClass{
+    margin-top: 15px;
+}
+
+.cardButtonClass{
+    margin-bottom: 15px;
+}
+
+.cardBodyClass {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.cardImgContainer{
+    
+    overflow: hidden;
+}
+
+@import '~bootstrap/scss/bootstrap';
