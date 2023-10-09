@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import styles from "../../scss/form/Form.module.scss"
 
 function ContactForm() {
     const [formData, setFormData] = useState({
@@ -72,67 +72,69 @@ function ContactForm() {
     };
 
     return (
-        <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="fullName">
-          <Form.Label>Full Name</Form.Label>
-          <Form.Control
-            type="text"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-            isInvalid={formErrors.fullName}
-          />
-          <Form.Control.Feedback type="invalid">
-            {formErrors.fullName}
-          </Form.Control.Feedback>
-        </Form.Group>
-  
-        <Form.Group controlId="subject">
-          <Form.Label>Subject</Form.Label>
-          <Form.Control
-            type="text"
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            isInvalid={formErrors.subject}
-          />
-          <Form.Control.Feedback type="invalid">
-            {formErrors.subject}
-          </Form.Control.Feedback>
-        </Form.Group>
-  
-        <Form.Group controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            isInvalid={formErrors.email}
-          />
-          <Form.Control.Feedback type="invalid">
-            {formErrors.email}
-          </Form.Control.Feedback>
-        </Form.Group>
-  
-        <Form.Group controlId="body">
-          <Form.Label>Body</Form.Label>
-          <Form.Control
-            as="textarea"
-            name="body"
-            value={formData.body}
-            onChange={handleChange}
-            isInvalid={formErrors.body}
-          />
-          <Form.Control.Feedback type="invalid">
-            {formErrors.body}
-          </Form.Control.Feedback>
-        </Form.Group>
-  
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+        <div className={styles['centered-form']}>
+            <Form onSubmit={handleSubmit} className='mb-3'>
+                <Form.Group controlId="fullName">
+                    <Form.Label className={styles['form-label']}>Full Name</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        isInvalid={formErrors.fullName}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                        {formErrors.fullName}
+                    </Form.Control.Feedback>
+                </Form.Group>
+    
+                <Form.Group controlId="subject">
+                    <Form.Label className={styles['form-label']}>Subject</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        isInvalid={formErrors.subject}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                        {formErrors.subject}
+                    </Form.Control.Feedback>
+                </Form.Group>
+    
+                <Form.Group controlId="email">
+                    <Form.Label className={styles['form-label']}>Email</Form.Label>
+                    <Form.Control
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        isInvalid={formErrors.email}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                        {formErrors.email}
+                    </Form.Control.Feedback>
+                </Form.Group>
+        
+                <Form.Group controlId="body">
+                    <Form.Label className={styles['form-label']}>Body</Form.Label>
+                    <Form.Control
+                        as="textarea"
+                        name="body"
+                        value={formData.body}
+                        onChange={handleChange}
+                        isInvalid={formErrors.body}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                        {formErrors.body}
+                    </Form.Control.Feedback>
+                </Form.Group>
+        
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+            </Form>
+        </div>
     );
 }
 
