@@ -18,7 +18,6 @@ function App() {
     const [cart, setCart] = useState([]);
     const value = {cart, setCart};
     useEffect(() => {
-        // Retrieve cart data from localStorage when the app starts
         const savedCart = localStorage.getItem("cart");
         if (savedCart) {
           setCart(JSON.parse(savedCart));
@@ -26,7 +25,6 @@ function App() {
       }, []);
     
       useEffect(() => {
-        // Update localStorage whenever cart changes
         localStorage.setItem("cart", JSON.stringify(cart));
       }, [cart]);
 
