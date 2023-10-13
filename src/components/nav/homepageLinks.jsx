@@ -1,7 +1,6 @@
 const homepageLinks = [
-    {label: 'Home', url: '/home'},
-    {label: 'Individual product page', url: './product'},
-    {label: '🛒', url: '/cart'}
+    {label: 'Contact Us', url: './Contact'},
+
 ]
 
 export default homepageLinks;
