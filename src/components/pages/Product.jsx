@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useAPI from "../../hooks/API/useAPI";
-import { useCart } from "../../hooks/API/CartContext";
 import { CartContext } from "../../App";
+import styles from "../../scss/button/Button.module.scss"
+import { Button, Card } from "react-bootstrap";
+
 
 
 function Product() {
@@ -34,40 +36,41 @@ const addToCart = () => {
     }
 
   return (
-    <div className="individual-product">
-        Individual post id: {productData.id}
-        <h1>{productData.title}</h1>
-        <p>{productData.description}</p>
-        <img
-            className="product-image"
-            src={productData.imageUrl}
-            alt={productData.title}
-        />
-        <div className="product-price">
-            {productData.discountedPrice ? (
-            <p>{productData.discountedPrice}</p>
-            ) : (
-            <p>{productData.price}</p>
-            )}
-        </div>
-        <button onClick={addToCart}>Add to cart</button>
-        <div>
-            <h2>Reviews</h2>
-            {productData.reviews && productData.reviews.length > 0 ? (
-            <ul>
-                {productData.reviews.map((review) => (
-                <li key={review.id}>
-                    <strong>{review.username}</strong>
-                    <p>Rating: {review.rating}</p>
-                    <p>{review.description}</p>
-                    <hr />
-                </li>
-                ))}
-            </ul>
-            ) : (
-            <p>No reviews available</p>
-            )}
-        </div>
+    <div>
+        <Card className="individual-product">
+            <Card.Body>
+                <Card.Title>{productData.title}</Card.Title>
+                <Card.Text>{productData.description}</Card.Text>
+                <Card.Img className="product-image" src={productData.imageUrl} alt={productData.title} />
+                <div className="product-price">
+                {productData.discountedPrice ? (
+                    <p>{productData.discountedPrice}</p>
+                ) : (
+                    <p>{productData.price}</p>
+                )}
+                </div>
+                <Button className={`button-color ${styles['button-color']}`} onClick={addToCart}>
+                Add to cart
+                </Button>
+            </Card.Body>
+            <Card.Footer>
+                <h2>Reviews</h2>
+                {productData.reviews && productData.reviews.length > 0 ? (
+                <ul>
+                    {productData.reviews.map((review) => (
+                    <li key={review.id}>
+                        <strong>{review.username}</strong>
+                        <p>Rating: {review.rating}</p>
+                        <p>{review.description}</p>
+                        <hr />
+                    </li>
+                    ))}
+                </ul>
+                ) : (
+                <p>No reviews available</p>
+                )}
+            </Card.Footer>
+        </Card>
     </div>
   );
 }
