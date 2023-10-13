@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import useAPI from "../../hooks/API/useAPI";
-import { Card, Button, Row, Col } from "react-bootstrap";
+import btnStyles from "../../scss/button/Button.module.scss"
 import styles from '../../scss/ProductCards/ProductCards.module.scss';
+import { Card, Button, Row, Col } from "react-bootstrap";
+
 
 import '../../App.scss';
 
@@ -21,6 +23,11 @@ function SearchBar() {
     const bootstrapClassesCard = "flex-fill";
     const cardClass = styles.cardington;
 
+    const btnClassOne = styles['cardButtonClass'];
+    const btnClassTwo = btnStyles['button-color'];
+
+    const btnClasses = `${btnClassOne} ${btnClassTwo}`
+
     const combinedClasses = `${bootstrapClassesCard} ${cardClass}`
 
 
@@ -34,20 +41,18 @@ function SearchBar() {
                 ) : isError ? (
                     <p>Error fetching data.</p>
                 ) : (
-                    <div>
+                    <div className={styles.ProductHolder}>
                         <Row id="rowstyling">
                             {filteredData.map((item) => (
                                 <Col className="d-flex" xs={12} sm={6} md={4} lg={3}>
-                                    <Card style={{ width: '16rem', margin: '2px' }} key={item.id} className={`w-100 ${combinedClasses}`}>   <div className={styles. cardImgContainer}>
-                                            <Card.Img className="shop-img" src={item.imageUrl} variant="top" alt={item.title} />
+                                    <Card style={{ width: '16rem' }} key={item.id} className={`w-100 ${combinedClasses}`}>   <div className={styles. cardImgContainer}>
+                                            <Card.Img className={`${styles.shopimg}`} src={item.imageUrl} variant="top" alt={item.title} />
                                         </div>
-                                        <div className="card-content-wrapper d-flex flex-column">
+                                        <div className={`card-content-wrapper d-flex flex-column ${styles.cardContainer}`}>
                                             <Card.Body className={styles.cardBodyClass}>   
-                                                <Card.Title className={styles.cardTitleClass}>{item.title}</Card.Title>
-                                                <Card.Text className={styles.cardTextClass}>{item.description}</Card.Text>
-                                                
+                                                <Card.Title className={styles.cardTitleClass}>{item.title}</Card.Title>                                                
                                             </Card.Body>
-                                            <Button className={styles.cardButtonClass} href={`/product/${item.id}`}>View Product!</Button>
+                                            <Button className={btnClasses} href={`/product/${item.id}`}>View Product!</Button>
                                         </div>
                                     </Card>
                                 </Col>

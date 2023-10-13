@@ -1,5 +1,7 @@
 import React, { useEffect, useContext, reduce } from "react";
 import { CartContext } from "../../App";
+import { Button } from "react-bootstrap";
+import styles from "../../scss/button/Button.module.scss"
 
 function Cart() {
     const { cart } = useContext(CartContext);
@@ -34,7 +36,7 @@ function Cart() {
         ))}
       </ul>
       <p>Total Price: {total}</p>
-      <button>Checkout</button>
+      <Button href="/CheckoutSuccess" className={`button-color ${styles['button-color']}`}>Checkout</Button>
     </div>
   );
 }
