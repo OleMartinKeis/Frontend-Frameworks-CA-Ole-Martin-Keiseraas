@@ -5,7 +5,7 @@ import CartIcon from './components/ui/CartIcon';
 import { Routes, Route } from 'react-router-dom'
 import Product from './components/pages/Product'
 import Cart from './components/pages/Cart'
-import Checkout from './components/pages/Checkout';
+import CheckoutSuccess from './components/pages/CheckoutSuccess';
 import HomeApp from './components/pages/Home';
 import ContactApp from './components/pages/Contact';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -36,7 +36,7 @@ function App() {
             </Layout>
             <Routes>
                 <Route path="home" element={<HomeApp />} />
-                <Route path="checkout" element={<Checkout />} />
+                <Route path="checkoutsuccess" element={<CheckoutSuccess />} />
                 <Route path="product/:id" element={<Product />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="contact" element={<ContactApp />} />
