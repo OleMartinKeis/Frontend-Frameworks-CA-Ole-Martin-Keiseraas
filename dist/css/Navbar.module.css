@@ -2,11 +2,17 @@
   background-color: rgb(152, 255, 152);
 }
 
+.navbarlogo {
+  color: rgb(13, 110, 0);
+}
+
 .navbaranchor {
   text-decoration: none !important;
+  color: rgb(13, 110, 0);
 }
 
 .cartclass {
+  size: 32px;
   text-decoration: none !important;
-  width: 18rem;
+  color: black;
 }/*# sourceMappingURL=Navbar.module.css.map */

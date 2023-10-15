@@ -2,7 +2,7 @@
 .cardTitleClass {
   margin: 0 auto;
   text-align: center;
-  color: blue !important;
+  color: rgb(13, 110, 0) !important;
 }
 
 .cardTextClass {
@@ -48,6 +48,7 @@
 
 .ProductHolder {
   padding-top: 1rem;
+  padding-bottom: 3rem;
   margin: 0 auto;
   max-width: 80%;
 }
