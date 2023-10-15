@@ -1,5 +1,5 @@
 import React from "react";
-import MyNavbar from "../nav/Navbar";
+import MyNavbar from "../nav/navbar";
 import homepageLinks from "../nav/HomepageLinks";
 import styles from "../../scss/footer/Footer.module.scss"
 
