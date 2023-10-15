@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import styles from "../../scss/form/Form.module.scss"
+import btnstyles from "../../scss/button/Button.module.scss"
+
 
 function ContactForm() {
     const [formData, setFormData] = useState({
@@ -20,8 +22,7 @@ function ContactForm() {
     const validateForm = () => {
         let valid = true;
         const newErrors = { ...formErrors };
-
-        
+   
     if (formData.fullName.length < 3) {
         newErrors.fullName = 'Full Name must be at least 3 characters';
         valid = false;
@@ -73,6 +74,8 @@ function ContactForm() {
 
     return (
         <div className={styles['centered-form']}>
+            <h2>Contact us!</h2>
+            <p className={styles["form-text"]}>Please fill out this form and custom service will answer in 1-2 business days</p>
             <Form onSubmit={handleSubmit} className='mb-3'>
                 <Form.Group controlId="fullName">
                     <Form.Label className={styles['form-label']}>Full Name</Form.Label>
@@ -87,7 +90,6 @@ function ContactForm() {
                         {formErrors.fullName}
                     </Form.Control.Feedback>
                 </Form.Group>
-    
                 <Form.Group controlId="subject">
                     <Form.Label className={styles['form-label']}>Subject</Form.Label>
                     <Form.Control
@@ -101,7 +103,6 @@ function ContactForm() {
                         {formErrors.subject}
                     </Form.Control.Feedback>
                 </Form.Group>
-    
                 <Form.Group controlId="email">
                     <Form.Label className={styles['form-label']}>Email</Form.Label>
                     <Form.Control
@@ -115,7 +116,6 @@ function ContactForm() {
                         {formErrors.email}
                     </Form.Control.Feedback>
                 </Form.Group>
-        
                 <Form.Group controlId="body">
                     <Form.Label className={styles['form-label']}>Body</Form.Label>
                     <Form.Control
@@ -129,8 +129,7 @@ function ContactForm() {
                         {formErrors.body}
                     </Form.Control.Feedback>
                 </Form.Group>
-        
-                <Button variant="primary" type="submit">
+                <Button className={`${btnstyles['button-color']} ${styles['form-button']}`} type="submit">
                     Submit
                 </Button>
             </Form>
