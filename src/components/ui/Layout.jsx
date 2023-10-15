@@ -1,6 +1,7 @@
 import React from "react";
 import MyNavbar from "../nav/Navbar";
 import homepageLinks from "../nav/HomepageLinks";
+import styles from "../../scss/footer/Footer.module.scss"
 
 function Layout({ children }) {
     return (
@@ -13,7 +14,7 @@ function Layout({ children }) {
             <main>
                 {children}
             </main>
-            <footer>Placeholder</footer>
+            <footer className={styles.footer}>This is not a real store. This is a task created for Noroff by <a href="https://github.com/OleMartinKeis"> Ole Martin Keiseraas</a></footer>
         </div>
     )
 }
