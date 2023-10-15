@@ -10,7 +10,7 @@ import styles from "../../scss/ProductCards/SingleProductCard.module.scss"
 function Product() {
     const { id } = useParams();
     const { setCart, cart } = useContext(CartContext)
-    const { data: productData, isLoading, isError } = useAPI(
+    const { data: productData } = useAPI(
         `https://api.noroff.dev/api/v1/online-shop/${id}`
 );
 

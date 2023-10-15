@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import useAPI from "../../hooks/API/useAPI";
 import btnStyles from "../../scss/button/Button.module.scss"
 import styles from '../../scss/ProductCards/ProductCards.module.scss';
 import { Card, Button, Row, Col } from "react-bootstrap";
-
-
 import '../../App.scss';
 
 function SearchBar() {
@@ -45,7 +43,7 @@ function SearchBar() {
                         <Row id="rowstyling">
                             {filteredData.map((item) => (
                                 <Col className="d-flex" xs={12} sm={6} md={4} lg={3}>
-                                    <Card style={{ width: '16rem' }} key={item.id} className={`w-100 ${combinedClasses}`}>   <div className={styles. cardImgContainer}>
+                                    <Card style={{ width: '16rem' }} key={item.id} className={`w-100 ${combinedClasses}`}>   <div className={styles.cardImgContainer}>
                                             <Card.Img className={`${styles.shopimg}`} src={item.imageUrl} variant="top" alt={item.title} />
                                         </div>
                                         <div className={`card-content-wrapper d-flex flex-column ${styles.cardContainer}`}>

@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import './App.css';
 import Layout from './components/ui/Layout';
-import { Routes, Route, Redirect } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Product from './components/pages/Product'
 import Cart from './components/pages/Cart'
 import CheckoutSuccess from './components/pages/CheckoutSuccess';

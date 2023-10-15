@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, reduce } from "react";
+import React, { useContext } from "react";
 import { CartContext } from "../../App";
 import { Button, Card } from "react-bootstrap";
 import btnstyles from "../../scss/button/Button.module.scss"
