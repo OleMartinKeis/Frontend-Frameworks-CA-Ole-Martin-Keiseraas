@@ -10,16 +10,16 @@ function MyNavbar({ title, links, cartCount }) {
         <Navbar expand="sm" className={styles["custom-navbar"]}>
             <Container>
                 <LinkContainer to="/home">
-                    <Navbar.Brand href="home">Find</Navbar.Brand>
+                    <Navbar.Brand className={styles.navbarlogo} href="home">Find</Navbar.Brand>
                 </LinkContainer>
-                    <Nav className={` me-auto justify-content-between w-100 ${styles.navbaranchor}`}>
+                    <Nav className={`me-auto justify-content-between w-100`}>
                     {links.map((link, index) => (
-                    <LinkContainer key={index} to={link.url}>                   
-                        <Link lg={4}>{link.label}</Link>
+                    <LinkContainer  key={index} to={link.url}>                   
+                        <Link className={styles.navbaranchor} lg={4}>{link.label}</Link>
                     </LinkContainer>
 
                     ))}
-                        <Link to="/cart">
+                        <Link className={styles.navbaranchor} to="/cart">
                             <CartIcon cartCount={cartCount} /> 
                         </Link>
                     </Nav>
