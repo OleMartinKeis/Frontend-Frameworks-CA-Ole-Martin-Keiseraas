@@ -9,7 +9,14 @@
     border: 1px solid rgb(13, 110, 0);
     background-color: #fff;
     border-radius: 3px 3px 12px 12px;
-  }
+}
+
+@media (max-width: 786px) {
+    .centered-form {
+        margin-top: 80px;
+    }
+    
+}
 
 .form-label{
     padding-bottom: 0px !important;
