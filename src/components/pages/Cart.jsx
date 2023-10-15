@@ -1,19 +1,24 @@
 import React, { useEffect, useContext, reduce } from "react";
 import { CartContext } from "../../App";
-import { Button } from "react-bootstrap";
-import styles from "../../scss/button/Button.module.scss"
+import { Button, Card } from "react-bootstrap";
+import btnstyles from "../../scss/button/Button.module.scss"
+import styles from "../../scss/cart/Checkout.module.scss"
 
 function Cart() {
-    const { cart } = useContext(CartContext);
+    const { cart, setCart } = useContext(CartContext);
 
-  if (!cart || cart.length === 0) {
-    return (
-      <div>
-        <h2>Cart</h2>
-        <p>Your cart is empty.</p>
-      </div>
-    );
-  }
+    const emptyCart = () => {
+        setCart([]);
+    }
+
+    if (!cart || cart.length === 0) {
+        return (
+        <div>
+            <h2>Cart</h2>
+            <p>Your cart is empty.</p>
+        </div>
+        );
+    }
 
   const total = cart.reduce((acc, item) => {
     const itemPrice = item.discountedPrice ? item.discountedPrice : item.price;
@@ -21,22 +26,28 @@ function Cart() {
   }, 0);
 
   return (
-    <div>
-      <ul>
-        {cart.map((item) => (
-          <li key={item.id}>
-            <p>{item.title}</p>
-            {item.discountedPrice ? (
-              <p>Price: {item.discountedPrice}</p>
-            ) : (
-              <p>Price: {item.price}</p>
-            )}
-            <p>Quantity: {item.quantity}</p>
-          </li>
-        ))}
-      </ul>
-      <p>Total Price: {total}</p>
-      <Button href="/CheckoutSuccess" className={`button-color ${styles['button-color']}`}>Checkout</Button>
+    <div className={styles.CenterDiv}>
+        <Card className={styles.CheckoutCard}>
+            <ul>
+                {cart.map((item) => (
+                <li className={styles.CardList} key={item.id}>
+                    <Card.Title className={styles.CardTitle}>{item.title}</Card.Title>
+                    {item.discountedPrice ? (
+                    <Card.Text>Price: {item.discountedPrice}kr.</Card.Text>
+                    ) : (
+                    <Card.Text>Price: {item.price}kr.</Card.Text>
+                    )}
+                    <Card.Text>Quantity: {item.quantity}</Card.Text>
+                    <hr className={styles.CardLine}></hr>
+                </li>
+                ))}
+            </ul>
+            <Card.Footer className={styles.CardFooter}>
+                <p>Total Price: {total}kr.</p>
+            </Card.Footer>
+            <Button onClick={emptyCart} href="/CheckoutSuccess" className={`button-color ${btnstyles['button-color']} ${styles['CheckoutButton']}`}>Checkout</Button>
+        </Card>
+
     </div>
   );
 }
