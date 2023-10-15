@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../../App";
+import styles from "../../scss/navbar/Navbar.module.scss"
+
 function CartIcon() {
-    const [cartCount, setCartCount] = useState(0);
+    const { cart } = useContext(CartContext);
+
+    const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
     return (
         <div>
-            <span>Cart</span>
-            <span className="cart-icon">🛒 {cartCount} </span>
+            <i className={'bi bi-cart ' + styles.cartclass}>🛒</i>
+            {totalQuantity > 0 && (
+                <span className="badge bg-secondary">{totalQuantity}</span>
+            )}
         </div>
     )
 }
