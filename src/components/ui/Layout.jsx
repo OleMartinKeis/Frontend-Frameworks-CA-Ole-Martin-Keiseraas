@@ -1,6 +1,6 @@
 import React from "react";
 import MyNavbar from "../nav/navbar";
-import homepageLinks from "../nav/HomepageLinks";
+import homepageLinks from "../nav/homepageLinks";
 import styles from "../../scss/footer/Footer.module.scss"
 
 function Layout({ children }) {
