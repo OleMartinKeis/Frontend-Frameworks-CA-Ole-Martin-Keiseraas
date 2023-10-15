@@ -1,18 +1,21 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import useAPI from "../../hooks/API/useAPI";
 import { CartContext } from "../../App";
-import styles from "../../scss/button/Button.module.scss"
+import btnstyles from "../../scss/button/Button.module.scss"
 import { Button, Card } from "react-bootstrap";
-
+import styles from "../../scss/ProductCards/SingleProductCard.module.scss"
 
 
 function Product() {
-  const { id } = useParams();
-  const { setCart, cart } = useContext(CartContext)
-  const { data: productData, isLoading, isError } = useAPI(
-    `https://api.noroff.dev/api/v1/online-shop/${id}`
-  );
+    const { id } = useParams();
+    const { setCart, cart } = useContext(CartContext)
+    const { data: productData, isLoading, isError } = useAPI(
+        `https://api.noroff.dev/api/v1/online-shop/${id}`
+);
+
+
+const isOnSale = productData.discountedPrice < productData.price;
 
 const addToCart = () => {
         
@@ -36,20 +39,25 @@ const addToCart = () => {
     }
 
   return (
-    <div>
-        <Card className="individual-product">
+    <div className={styles.DivTop}>
+        <Card className={styles.SingleProduct}>
             <Card.Body>
-                <Card.Title>{productData.title}</Card.Title>
+                <Card.Title className={styles.ProductTitle}>{productData.title}</Card.Title>
                 <Card.Text>{productData.description}</Card.Text>
-                <Card.Img className="product-image" src={productData.imageUrl} alt={productData.title} />
+                <Card.Img className={styles.cardImgContainer} src={productData.imageUrl} alt={productData.title} />
                 <div className="product-price">
-                {productData.discountedPrice ? (
-                    <p>{productData.discountedPrice}</p>
-                ) : (
-                    <p>{productData.price}</p>
-                )}
+                    {isOnSale ? (
+                        <p className={`${styles.SalePrice}`}>
+                            Kr. {productData.price}
+                        </p>
+                        ) : (
+                        <p>Kr. {productData.price}</p>
+                        )}
+                        {isOnSale && (
+                        <p className={styles.onSalePrice}>On Sale: Kr. {productData.discountedPrice}</p>
+                    )}
                 </div>
-                <Button className={`button-color ${styles['button-color']}`} onClick={addToCart}>
+                <Button className={`button-color ${btnstyles['button-color']}`} onClick={addToCart}>
                 Add to cart
                 </Button>
             </Card.Body>
