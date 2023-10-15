@@ -1,8 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import './App.css';
 import Layout from './components/ui/Layout';
-import CartIcon from './components/ui/CartIcon';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Redirect } from 'react-router-dom'
 import Product from './components/pages/Product'
 import Cart from './components/pages/Cart'
 import CheckoutSuccess from './components/pages/CheckoutSuccess';
@@ -32,15 +31,15 @@ function App() {
     
         <CartContext.Provider value={value}>
             <Layout>
-                <CartIcon />
+                <Routes>
+                    <Route path="/" element={<HomeApp />} />
+                    <Route path="home" element={<HomeApp />} />
+                    <Route path="checkoutsuccess" element={<CheckoutSuccess />} />
+                    <Route path="product/:id" element={<Product />} />
+                    <Route path="cart" element={<Cart />} />
+                    <Route path="contact" element={<ContactApp />} />
+                </Routes>
             </Layout>
-            <Routes>
-                <Route path="home" element={<HomeApp />} />
-                <Route path="checkoutsuccess" element={<CheckoutSuccess />} />
-                <Route path="product/:id" element={<Product />} />
-                <Route path="cart" element={<Cart />} />
-                <Route path="contact" element={<ContactApp />} />
-            </Routes>
         </CartContext.Provider>
     
   );
