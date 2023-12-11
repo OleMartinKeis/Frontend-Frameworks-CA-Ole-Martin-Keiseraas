@@ -98,6 +98,18 @@ Your code is expected to be clean and well-formatted.
 
 In the project directory, you can run:
 
+1. Clone the repo:
+
+```bash
+git clone git@github.com:NoroffFEU/portfolio-1-example.git
+```
+
+2. Install the dependencies:
+
+```
+npm install
+```
+
 ### `npm run start`
 
 Runs the app in the development mode.\
